@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+OIFS="$IFS"
+IFS=$'\n' # Handle file names with spaces
+
 set -e
 
 tw_lines=""  # Lines containing trailing whitespaces.
@@ -22,5 +25,7 @@ if [ ! -z "$tw_lines" ]; then
   echo -e "\nFailed.\n"
   exit_code=1
 fi
+
+IFS="$OIFS"
 
 exit $exit_code
